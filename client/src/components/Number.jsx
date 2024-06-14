@@ -1,10 +1,23 @@
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
+import Word from './Word'
 
-const Number = () => {
-const {number} = useParams()
+const Number = (props) => {
+    
+    
+    let {Number} = props
+    const {number} = useParams()
+    const navigate = useNavigate()
+    
+    if(isNaN(number) && isNaN(Number)){
+        return <Word Word={number}/>
+    }
+
+
     return (
         <>
-            <p>The number is: {isNaN(number)? "Not a number": number}</p>
+            {
+                !isNaN(number)?  `The number is ${number}`: `The number is ${Number}`
+            }
         </>
     )
 }
